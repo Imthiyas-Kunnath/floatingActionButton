@@ -38,43 +38,122 @@ class _MyHomePageState extends State<MyHomePage> {
           Text("GFG",textScaleFactor: 3,)
         ],
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+      body:
+      SingleChildScrollView(
+        child: Stack(
           children: <Widget>[
-            Text("Floating action button pressed this many times"),
-            Padding(
-              padding: const EdgeInsets.all(10),
-            ),
-            Text("$i",textScaleFactor: 3,),
-            Padding(
-              padding: const EdgeInsets.all(10),
-            ),
-            FloatingActionButton(
-              // isExtended: true,
-              child: Icon(Icons.add),
-              backgroundColor: Colors.green,
-              onPressed: () {
-                setState(() {
-                  i++;
-                });
-              },
-            ),
-          Padding(
-            padding: const EdgeInsets.all(10),
-          ),
-            FloatingActionButton(
-              // isExtended: true,
+            new Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text("Floating action button pressed this many times"),
+                Padding(
+                  padding: const EdgeInsets.all(10),
+                ),
+                Text("$i",textScaleFactor: 3,),
+                Padding(
+                  padding: const EdgeInsets.all(10),
+                ),
+                FloatingActionButton(
+                  // isExtended: true,
+                  child: Icon(Icons.add),
+                  backgroundColor: Colors.green,
+                  onPressed: () {
+                    setState(() {
+                      i++;
+                    });
+                  },
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(10),
+                ),
+                new InkWell(
+                  onTap: (){
+                    ScaffoldMessenger.of(context).showSnackBar(
+                       SnackBar(content: Text('Processing Data')),
+                    );
+                  },
+                  child: new                 Container(
+                    padding: const EdgeInsets.fromLTRB(32,10,32,0),
+                    child: Row(
+                      children: [
+                        new Image.network("https://sites.psu.edu/siowfa16/files/2016/10/YeDYzSR-10apkm4.png",
+                        width: 50,
+                        height: 50,),
+                        Padding(padding: EdgeInsets.only(left: 15)),
+                        Expanded(
+                          /*1*/
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              /*2*/
+                              Container(
+                                padding: EdgeInsets.only(bottom: 8),
+                                child:  Text(
+                                  'Oeschinen Lake Campground',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                              Text(
+                                'Kandersteg, Switzerland',
+                                style: TextStyle(
+                                  color: Colors.grey[500],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        /*3*/
+                        Icon(
+                          Icons.star,
+                          color: Colors.red[500],
+                        ),
+                        Text('41'),
+                      ],
+                    ),
 
-              child: Icon(Icons.minimize),
-              backgroundColor: Colors.green,
-              onPressed: () {
-                setState(() {
-                  if (i>1)
-                    i--;
-                });
-              },
-            ),
+                  ),
+                ),
+                Divider(),
+                Container(
+                  padding: const EdgeInsets.fromLTRB(32,10,32,0),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        /*1*/
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            /*2*/
+                            Container(
+                              padding: const EdgeInsets.only(bottom: 8),
+                              child: const Text(
+                                'Oeschinen Lake Campground',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w900,
+                                ),
+                              ),
+                            ),
+                            Text(
+                              'Kandersteg, Switzerland',
+                              style: TextStyle(
+                                color: Colors.grey[500],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      /*3*/
+                      Icon(
+                        Icons.access_alarm,
+                        color: Colors.red[800],
+                      ),
+                      const Text('41'),
+                    ],
+                  ),
+                )
+
 /*
             floatingActionButton: Column(
               mainAxisAlignment: MainAxisAlignment.end,
@@ -102,9 +181,12 @@ class _MyHomePageState extends State<MyHomePage> {
               ],
             )
 */
-          ],),
-
+              ],)
+          ],
+        ),
       ),
+
+   //   ),
       floatingActionButton: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
